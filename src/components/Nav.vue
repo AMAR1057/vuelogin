@@ -49,9 +49,9 @@ const loggingOut = () => {
                 Secret
               </li>
             </router-link>
-            <button @click="loggingOut">
+             <button @click="loggingOut">
               <li
-                class="px-4 py-8  hover:cursor-pointer hover:pink-300 hover:text-pink-200"
+                class="px-4 py-8  hover:cursor-pointer hover:bg-pink-300 hover:text-pink-200"
               >
                 Logout
               </li>
