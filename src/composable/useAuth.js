@@ -1,8 +1,11 @@
 import { ref } from "vue";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import {
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  signOut,
+} from "firebase/auth";
 
 import { firebaseAuth } from "./useFirebase";
-import { async } from "@firebase/util";
 
 const isAuthenticated = ref(false);
 
