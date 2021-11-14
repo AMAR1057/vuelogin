@@ -3,10 +3,16 @@ import { ref } from "vue";
 import { useRouter } from "vue-router";
 import useAuth from "../composable/useAuth";
 import useError from "../composable/useError";
-const { isAuthenticated, login, signup } = useAuth();
+
+
+
+const { isAuthenticated, login, signup,googleLogin } = useAuth();
+
 const username = ref("");
 const password = ref("");
+
 const router = useRouter();
+
 const logginIn = async () => {
   await login(username.value, password.value);
   goToHome();
@@ -15,6 +21,11 @@ const signingUp = async () => {
   await signup(username.value, password.value);
   goToHome();
 };
+const google = async () => {
+  await googleLogin();
+  goToHome();
+};
+
 const goToHome = () => {
   if (isAuthenticated.value) {
     router.push("/");
@@ -64,7 +75,10 @@ const { ready, start } = useTimeout(3000, { controls: true });
             Sing Up
           </button>
         </div>
+        <button @click="google"
+        class=" flex justify-center py-2 bg-white rounded-lg hover:bg-gray-300"><img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt=""></button>
       </form>
+      
     </div>
     <div
       v-if="!ready && error"
